@@ -9,15 +9,20 @@ import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
+import lombok.ToString;
 
 @Entity
 @Table(name="tbl_sports")
-@Data
-@AllArgsConstructor
+@Getter
+@Setter
+@ToString
 @NoArgsConstructor
+@AllArgsConstructor
 @Builder
-public class Sports {
+public class Sports extends BaseEntity{
 	
 	@Id
 	@GeneratedValue(strategy= GenerationType.IDENTITY)
@@ -25,7 +30,15 @@ public class Sports {
 	
 	@Column(length=50,nullable = false)
 	String brandName;
+	
 	@Column(nullable = false)
 	int price;
+
+	@Column(length=200 ,nullable = false)
+	String content;
+	
+	@Column(length=20,nullable = false)
+	String color;
+	
 	
 }

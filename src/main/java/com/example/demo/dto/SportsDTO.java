@@ -20,6 +20,10 @@ public class SportsDTO {
 	
 	int price;
 	
+	String content;
+	
+	String color;
+	
 	LocalDateTime regDate;
 	
 	LocalDateTime modDate;
