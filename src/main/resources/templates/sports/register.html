@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<th:block th:replace="~{/layout/basic :: setContent(~{this::content} )}">
+	<th:block th:fragment="content">
+		<h1 class="mt-4">Sports Register Page</h1>
+		<form th:action="@{/sports/register}" th:method="post">
+			<img class="card-img-top"
+				src="https://dummyimage.com/450x300/dee2e6/6c757d.jpg" alt="..." />
+			<div class="form-group">
+				<label>제품 브랜드</label> <input type="text" class="form-control"
+					name="brandName">
+			</div>
+
+			<div class="form-group">
+				<label>가격</label> <input type="text" class="form-control"
+					name="price">
+			</div>
+			<div class="form-group">
+				<label>용품 및 사용설명</label>
+				<textarea class="form-control" rows="5" name="content"></textarea>
+			</div>
+
+			<div class="form-group">
+				<label>색</label> <input type="text" class="form-control"
+					name="color">
+			</div>
+
+			<button type="submit" class="btn btn-primary">등록</button>
+	</th:block>
+</th:block>
