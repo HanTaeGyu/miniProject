@@ -34,7 +34,7 @@ public class SportsServiceTest {
 	}
 	@Test
 	void 수정() {
-		SportsDTO dto = service.read(2);
+		SportsDTO dto = service.read(1);
 		dto.setPrice(8000);
 		dto.setContent("스트랩 : 로우운동 종류 및 턱걸이 보조");
 		service.modify(dto);

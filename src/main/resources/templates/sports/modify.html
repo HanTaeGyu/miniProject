@@ -1,90 +1,96 @@
 <!DOCTYPE html>
 <th:block th:replace="~{/layout/basic :: setContent(~{this::content} )}">
 	<th:block th:fragment="content">
-<h1 class="mt-4">Sports Modify Page</h1>
+		<h1 class="mt-4">Sports Modify Page</h1>
 
-		<form>
+		<form th:action="@{/sports/modify}" th:method="post">
 
 
-			<img class="card-img-top"
-			src="https://dummyimage.com/450x300/dee2e6/6c757d.jpg" alt="..." />
+			<div class="row gx-4 gx-lg-5 align-items-center">
+				<div class="col-md-6">
+					<img class="card-img-top mb-5 mb-md-0"
+						src="https://dummyimage.com/600x700/dee2e6/6c757d.jpg" alt="...">
+				</div>
+				<div class="col-md-6">
 
-		<div class="form-group">
-			<label>번호</label> <input type="text" class="form-control"
-				th:value="${dto.no}" readonly>
-		</div>
 
-		<div class="form-group">
-			<label>브랜드이름</label> <input type="text" class="form-control"
-				th:value="${dto.brandName}" readonly>
-		</div>
+					<div class="form-group">
+						<label>번호</label> <input type="text" class="form-control"
+							name="no" th:value="${dto.no}" readonly>
+					</div>
 
-		<div class="form-group">
-			<label>가격</label> <input type="text" class="form-control"
-				th:value="${dto.price}" readonly>
-		</div>
+					<div class="form-group">
+						<label>브랜드이름</label> <input type="text" class="form-control"
+							name="brandName" th:value="${dto.brandName}" readonly>
+					</div>
 
-		<div class="form-group">
-			<label>내용</label>
-			<textarea class="form-control" rows="5" readonly>[[${dto.content}]]</textarea>
-		</div>
-		<div class="form-group">
-			<label>색</label> <input type="text" class="form-control"
-				th:value="${dto.color}" readonly>
-		</div>
-		<div class="form-group">
-			<label>등록일</label> <input type="text" class="form-control"
-				th:value="${#temporals.format(dto.regDate,'yyyy/MM/dd HH:mm:ss')}" readonly>
-		</div>
-		<div class="form-group">
-			<label>수정일</label> <input type="text" class="form-control"
-				th:value="${#temporals.format(dto.modDate,'yyyy/MM/dd HH:mm:ss')}" readonly>
-		</div>
+					<div class="form-group">
+						<label>가격</label> <input type="text" class="form-control"
+							name="price" th:value="${dto.price}">
+					</div>
+
+					<div class="form-group">
+						<label>내용</label>
+						<textarea class="form-control" rows="5" name="content">[[${dto.content}]]</textarea>
+					</div>
+					<div class="form-group">
+						<label>색</label> <input type="text" class="form-control"
+							name="color" th:value="${dto.color}" readonly>
+					</div>
+					<div class="form-group">
+						<label>등록일</label> <input type="text" class="form-control"
+							th:value="${#temporals.format(dto.regDate,'yyyy/MM/dd HH:mm:ss')}"
+							readonly>
+					</div>
+					<div class="form-group">
+						<label>수정일</label> <input type="text" class="form-control"
+							th:value="${#temporals.format(dto.modDate,'yyyy/MM/dd HH:mm:ss')}"
+							readonly>
+					</div>
+				</div>
+			</div>
+
+			<button type="submit" class="btn btn-outline-dark mt-auto modifyBtn">수정</button>
+
+			<button type="submit" class="btn btn-outline-dark mt-auto listBtn">목록으로</button>
+
+			<button type="submit" class="btn btn-danger removeBtn">삭제</button>
+
+
 
 		</form>
-
-		<button type="button" class="btn btn-primary modifyBtn">수정</button>
-
-		<button type="button" class="btn btn-info listBtn">목록으로</button>
-
-		<button type="button" class="btn btn-danger removeBtn">삭제</button>
 		<script th:inline="javascript">
-		//form 태그 객체 가져오기	
-		var form =$("form");
-			
-			$(".modifyBtn").click(function() {
-				//click()메소드 : 수정버튼을 클릭하면 특정코드를 수행한다
-				//confirm()메소드 : 수정여부를 확인하는 창을 띄운다
-				// [확인]을 클릭하면, 서버에 게시물 수정을 요청한다.
-				// [취소]을 선택하면 이벤트를 종료한다.
-				if (!confirm("수정할그~~야?")) {
-					return;
-				}
-				//form~attr~submit: 서버에 게시물 수정 요청(수정)
-				form
-				.attr("action","/sports/modify")
-				.attr("method","post")
-				.submit();
-				
-			});
-			//목록버튼 이벤트 처리(목록으로)
-			$(".listBtn").click(function(){
+			var form = $("form");
 
-				form
-				.attr("action","/sports/list")
-				.attr("method","get")
-				.submit();
-			});
-			
+			$(".modifyBtn").click(
+					function() {
+
+						if (!confirm("수정할그~~야?")) {
+							return;
+						}
+						//form~attr~submit: 서버에 게시물 수정 요청(수정)
+						form.attr("action", "/sports/modify").attr("method",
+								"post").submit();
+
+					});
+			//목록버튼 이벤트 처리(목록으로)
+			$(".listBtn").click(
+					function() {
+
+						form.attr("action", "/sports/list").attr("method",
+								"get").submit();
+					});
+
 			// 삭제
-			$(".removeBtn").click(function(){
-				form
-				.attr("action","/sports/remove")
-				.attr("method","post")
-				.submit();
-			});
-			
+			$(".removeBtn").click(
+					function() {
+						form.attr("action", "/sports/remove").attr("method",
+								"post").submit();
+					});
 		</script>
+
+
+
 
 	</th:block>
 </th:block>

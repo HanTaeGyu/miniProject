@@ -56,24 +56,20 @@ public class SportsController {
 	@GetMapping("/modify")
 	public void modify(@RequestParam(name = "no") int no, Model model) {
 		SportsDTO dto = service.read(no);
-		model.addAttribute("dto",dto);
+		model.addAttribute("dto", dto);
 	}
-	
+
 	@PostMapping("/modify")
-	public String modifyPost(SportsDTO dto,RedirectAttributes redirectAttributes) {
+	public String modifyPost(SportsDTO dto, RedirectAttributes redirectAttributes) {
 		service.modify(dto);
-		redirectAttributes.addFlashAttribute("no",dto.getNo());
+		redirectAttributes.addAttribute("no", dto.getNo());
 		return "redirect:/sports/read";
 	}
+
 	@PostMapping("/remove")
-	public String removePost(@RequestParam(name="no")int no) {
+	public String removePost(@RequestParam(name = "no") int no) {
 		service.remove(no);
 		return "redirect:/sports/list";
 	}
-	
 
-	}
-	
-	
-	
-
+}

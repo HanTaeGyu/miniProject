@@ -51,9 +51,9 @@ public class SportsServiceImpl implements SportsService {
 
 	@Override
 	public void modify(SportsDTO dto) {
-		Optional<Sports> opt = repository.findById(dto.getNo());
-		if (opt.isPresent()) {
-			Sports entity = opt.get();
+		Optional<Sports> result = repository.findById(dto.getNo());
+		if (result.isPresent()) {
+			Sports entity = result.get();
 			
 			
 			entity.setPrice(dto.getPrice());
