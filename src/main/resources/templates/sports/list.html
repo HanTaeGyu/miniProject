@@ -19,28 +19,31 @@
 
 				<!-- 부트스트랩의 스타일 적용 -->
 				<div class="col mb-5">
-				
+
 					<a class="btn btn-outline-dark mt-auto"
 						th:href="@{/sports/read(no=${dto.no})}">
-					<div class="card h-100">
-						<!-- Product image-->
-						<img class="card-img-top"
-							src="https://dummyimage.com/450x300/dee2e6/6c757d.jpg" alt="..." />
-						<!-- Product details-->
-						<div class="card-body p-4">
-							<div class="text-center">
-								<!-- Product name-->
-								<h5 class="fw-bolder">[[${dto.brandName}]]</h5>
-								<!-- Product price-->
-								[[${dto.price}]]"원"
+						<div class="card h-100">
+							<!-- Product image-->
+							<img class="card-img-top" th:if="${dto.no}==1" src="/strap.jfif" />
+							<img class="card h-99"> <img class="card-img-top"
+								th:if="${dto.no}>=2"
+								src="https://dummyimage.com/600x700/dee2e6/6c757d.jpg" alt="..." />
+							<!-- Product details-->
+							<div class="card-body p-4">
+								<div class="text-center">
+									<!-- Product name-->
+									<h5 class="fw-bolder">[[${dto.brandName}]]</h5>
+									<!-- Product price-->
+									[[${dto.price}]]"원"
+								</div>
 							</div>
+							<!-- Product actions-->
 						</div>
-						<!-- Product actions-->
-						</div></a>
-					</div>
+					</a>
 				</div>
+		</div>
 
-				<script th:inline="javascript">
+		<script th:inline="javascript">
 			$(document).ready(function(){
 			  // 실행할 기능을 정의
 			  var msg = [[${msg}]]
@@ -49,5 +52,5 @@
 			  }
 			});
 		</script>
-			</th:block>
 	</th:block>
+</th:block>

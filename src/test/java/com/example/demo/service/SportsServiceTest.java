@@ -32,6 +32,14 @@ public class SportsServiceTest {
 			System.out.println(dto);
 		}
 	}
+	
+	@Test
+	void 단건조회() {
+		List<SportsDTO>list =  service.getList();
+		for(SportsDTO dto : list) {
+			System.out.println(dto);
+		}
+	}
 	@Test
 	void 수정() {
 		SportsDTO dto = service.read(1);
